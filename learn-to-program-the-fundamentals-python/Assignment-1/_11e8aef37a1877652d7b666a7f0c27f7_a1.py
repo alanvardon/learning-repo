@@ -14,9 +14,7 @@ def seconds_difference(time_1, time_2):
     0.0
     """
     
-    return time_2 - time_1
-    
-
+    return float(time_2 - time_1)
 
 def hours_difference(time_1, time_2):
     """ (number, number) -> float
