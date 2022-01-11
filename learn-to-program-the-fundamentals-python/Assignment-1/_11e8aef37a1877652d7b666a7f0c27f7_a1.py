@@ -14,7 +14,9 @@ def seconds_difference(time_1, time_2):
     0.0
     """
     
-    return (time_2 - time_1)/3600
+    return time_2 - time_1
+
+print(seconds_difference(3600,1800))
 
 def hours_difference(time_1, time_2):
     """ (number, number) -> float
@@ -31,9 +33,7 @@ def hours_difference(time_1, time_2):
     >>> hours_difference(1800.0, 1800.0)
     0.0
     """
-    return float(time_1 - time_2)
-
-print(1800/3600)
+    return (time_2 - time_1)/3600
 
 def to_float_hours(hours, minutes, seconds):
     """ (int, int, int) -> float
