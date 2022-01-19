@@ -79,13 +79,14 @@ def to_24_hour_clock(hours):
 ### Write your get_hours function definition here:
 def get_hours(time_in_seconds):
     
-    return (time_in_seconds//3600)
+    return to_24_hour_clock(time_in_seconds // 3600)
 
 ### Write your get_minutes function definition here:
 
 def get_minutes(time_in_seconds):
     
-    return (time_in_seconds-3600)//60
+    return (time_in_seconds // 60) % 60
+
 
 ### Write your get_seconds function definition here:
 
