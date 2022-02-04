@@ -8,6 +8,8 @@ def get_length(dna):
     >>> get_length('ATCG')
     4
     """
+    
+    return len(dna)
 
 
 def is_longer(dna1, dna2):
@@ -21,7 +23,8 @@ def is_longer(dna1, dna2):
     >>> is_longer('ATCG', 'ATCGGA')
     False
     """
-
+    
+    return print(get_length(dna1) > get_length(dna2))
 
 def count_nucleotides(dna, nucleotide):
     """ (str, str) -> int
