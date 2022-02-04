@@ -36,7 +36,8 @@ def count_nucleotides(dna, nucleotide):
     >>> count_nucleotides('ATCTA', 'G')
     0
     """
-
+    
+    return dna.count(nucleotide)
 
 def contains_sequence(dna1, dna2):
     """ (str, str) -> bool
@@ -50,3 +51,4 @@ def contains_sequence(dna1, dna2):
     False
 
     """
+    return dna1.rfind(dna2) > -1
