@@ -51,6 +51,7 @@ def contains_sequence(dna1, dna2):
     False
 
     """
+    
     return dna1.rfind(dna2) > -1
 
 def is_valid_sequence(dna_seq):
@@ -70,7 +71,11 @@ def is_valid_sequence(dna_seq):
         
 def insert_sequence(dna, insert_seq, insert_index):
     
-    return dna[:insert_index] + insert_seq + dna[insert_index:]
+    dna_beginning = dna[:insert_index]
+    dna_end = dna[insert_index:]
+    new_dna_seq = dna_beginning + insert_seq + dna_end
+    
+    return new_dna_seq
 
 
 def get_complement(nucleotide):
