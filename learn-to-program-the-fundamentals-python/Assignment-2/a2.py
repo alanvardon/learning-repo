@@ -63,10 +63,12 @@ def is_valid_sequence(dna_seq):
         if dna_seq in nucleotides:
             continue
         else:
-            break
             valid_nucleotide = False
+            break
     
     return valid_nucleotide
+
+
 
         
 def insert_sequence(dna, insert_seq, insert_index):
