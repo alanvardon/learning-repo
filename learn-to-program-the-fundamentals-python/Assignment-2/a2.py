@@ -52,3 +52,32 @@ def contains_sequence(dna1, dna2):
 
     """
     return dna1.rfind(dna2) > -1
+
+def is_valid_sequence(dna_seq):
+    
+    nucleotides = 'ATCG'
+    valid_nucleotide = True
+    
+    for char in dna_seq:
+        if dna_seq in nucleotides:
+            continue
+        else:
+            break
+            valid_nucleotide = False
+    
+    return valid_nucleotide
+
+        
+def insert_sequence(dna, insert_seq, insert_index):
+    
+    return dna[:insert_index] + insert_seq + dna[insert_index:]
+
+
+
+def get_complement():
+    
+    pass
+
+def get_complementary_sequence():
+    
+    pass
