@@ -24,7 +24,7 @@ def is_longer(dna1, dna2):
     False
     """
     
-    return print(get_length(dna1) > get_length(dna2))
+    return get_length(dna1) > get_length(dna2)
 
 def count_nucleotides(dna, nucleotide):
     """ (str, str) -> int
