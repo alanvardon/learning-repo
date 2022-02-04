@@ -73,11 +73,29 @@ def insert_sequence(dna, insert_seq, insert_index):
     return dna[:insert_index] + insert_seq + dna[insert_index:]
 
 
-
-def get_complement():
+def get_complement(nucleotide):
     
-    pass
-
-def get_complementary_sequence():
+    if nucleotide == 'A':
+        
+        return 'T'
+   
+    elif nucleotide == 'T':
+        
+        return 'A'
     
-    pass
+    elif nucleotide == 'G':
+        
+        return 'C'
+    
+    elif nucleotide == 'C':
+        
+        return 'G'
+
+def get_complementary_sequence(dna):
+    
+    comp_seq = ''
+    
+    for char in dna:
+        comp_seq += get_complement(char)
+    
+    return comp_seq
