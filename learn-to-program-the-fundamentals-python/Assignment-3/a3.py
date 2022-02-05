@@ -13,6 +13,7 @@ is represented as the list
     ['ANT', 'BOX', 'SOB', 'TO']
 """
 
+#import tkinter.filedialog as tk_fd
 
 def is_valid_word(wordlist, word):
     """ (list of str, str) -> bool
@@ -23,14 +24,10 @@ def is_valid_word(wordlist, word):
     True
     """
     
-    word_app = False
-    
     for item in wordlist:
         if item == word:
-            word_app = True
-        break
-    
-    return word_app
+            return True
+    return False
     
 
 
@@ -102,8 +99,12 @@ def board_contains_word_in_column(board, word):
     >>> board_contains_word_in_column([['A', 'N', 'T', 'T'], ['X', 'S', 'O', 'B']], 'NO')
     False
     """
-
-
+    for item in board:
+        for col_index in range(len(item)):
+            if word in make_str_from_column(board,col_index):
+                return True
+    return False      
+        
 def board_contains_word(board, word):
     """ (list of list of str, str) -> bool
 
@@ -114,7 +115,10 @@ def board_contains_word(board, word):
     >>> board_contains_word([['A', 'N', 'T', 'T'], ['X', 'S', 'O', 'B']], 'ANT')
     True
     """
-
+    
+    if board_contains_word_in_column(board, word) or board_contains_word_in_row(board, word):
+        return True
+    return False
 
 def word_score(word):
     """ (str) -> int
@@ -129,6 +133,18 @@ def word_score(word):
     >>> word_score('DRUDGERY')
     16
     """
+    
+    if len(word) > 9:
+        return len(word) * 3
+    
+    elif len(word) > 6:
+        return len(word) * 2
+    
+    elif len(word) > 3:
+        return len(word)
+    
+    else:
+        return 0  
 
 
 def update_score(player_info, word):
@@ -139,6 +155,8 @@ def update_score(player_info, word):
 
     >>> update_score(['Jonathan', 4], 'ANT')
     """
+    
+    player_info[1] += word_score(word)
 
 
 def num_words_on_board(board, words):
@@ -149,8 +167,15 @@ def num_words_on_board(board, words):
     >>> num_words_on_board([['A', 'N', 'T', 'T'], ['X', 'S', 'O', 'B']], ['ANT', 'BOX', 'SOB', 'TO'])
     3
     """
-
-
+    
+    num_words = 0
+    
+    for word in words:
+        if board_contains_word(board, word):
+            num_words += 1
+            
+    return num_words
+        
 def read_words(words_file):
     """ (file open for reading) -> list of str
 
@@ -160,7 +185,16 @@ def read_words(words_file):
     Precondition: Each line of the file contains a word in uppercase characters
     from the standard English alphabet.
     """
+    
+    file = open(words_file,'r')
+    file_contents = file.readlines()
 
+    for i in range(len(file_contents)):
+        file_contents[i] = file_contents[i].rstrip('\n')
+        
+    return file_contents
+    
+    
 
 def read_board(board_file):
     """ (file open for reading) -> list of list of str
