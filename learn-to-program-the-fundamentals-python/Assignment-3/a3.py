@@ -22,6 +22,16 @@ def is_valid_word(wordlist, word):
     >>> is_valid_word(['ANT', 'BOX', 'SOB', 'TO'], 'TO')
     True
     """
+    
+    word_app = False
+    
+    for item in wordlist:
+        if item == word:
+            word_app = True
+        break
+    
+    return word_app
+    
 
 
 def make_str_from_row(board, row_index):
@@ -33,6 +43,13 @@ def make_str_from_row(board, row_index):
     >>> make_str_from_row([['A', 'N', 'T', 'T'], ['X', 'S', 'O', 'B']], 0)
     'ANTT'
     """
+    
+    concat_word = ''
+    
+    for char in board[row_index]:
+        concat_word += char
+    
+    return concat_word
 
 
 def make_str_from_column(board, column_index):
@@ -44,7 +61,14 @@ def make_str_from_column(board, column_index):
     >>> make_str_from_column([['A', 'N', 'T', 'T'], ['X', 'S', 'O', 'B']], 1)
     'NS'
     """
-
+    
+    concat_word = ''
+    
+    for item in board:
+        concat_word += item[column_index]
+        
+    return concat_word
+        
 
 def board_contains_word_in_row(board, word):
     """ (list of list of str, str) -> bool
