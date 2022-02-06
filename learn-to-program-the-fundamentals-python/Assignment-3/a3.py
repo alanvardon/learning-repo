@@ -15,6 +15,9 @@ is represented as the list
 
 #import tkinter.filedialog as tk_fd
 
+from os import lseek
+
+
 def is_valid_word(wordlist, word):
     """ (list of str, str) -> bool
 
@@ -194,12 +197,18 @@ def read_words(words_file):
         
     return file_contents
     
-    
-
 def read_board(board_file):
     """ (file open for reading) -> list of list of str
 
     Return a board read from open file board_file. The board file will contain
     one row of the board per line. Newlines are not included in the board.
     """
+    
+    file = open(board_file,'r')
+    file_contents = file.readlines()
+
+    for i in range(len(file_contents)):
+        file_contents[i] = file_contents[i].rstrip('\n')
+        
+    return file_contents
 
