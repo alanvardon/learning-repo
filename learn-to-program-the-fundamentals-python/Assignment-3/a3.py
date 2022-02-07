@@ -189,8 +189,7 @@ def read_words(words_file):
     from the standard English alphabet.
     """
     
-    file = open(words_file,'r')
-    file_contents = file.readlines()
+    file_contents = words_file.readlines()
 
     for i in range(len(file_contents)):
         file_contents[i] = file_contents[i].rstrip('\n')
@@ -204,11 +203,15 @@ def read_board(board_file):
     one row of the board per line. Newlines are not included in the board.
     """
     
-    file = open(board_file,'r')
-    file_contents = file.readlines()
-
-    for i in range(len(file_contents)):
-        file_contents[i] = file_contents[i].rstrip('\n')
+    line = board_file.readline()
+    board = []
+    
+    while line != '':
+        line = line.rstrip('\n')
+        word = []
+        word.extend(line)
+        board.append(word)
+        line = board_file.readline()
         
-    return file_contents
+    return board
 
